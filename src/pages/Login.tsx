@@ -128,8 +128,10 @@ const Login = () => {
 
     const { token, userId } = response.data;
 
-   localStorage.setItem("token", token);
-    localStorage.setItem("userId", email);
+ 
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("userId", userId);
 
       toast.success(response.data.message);
       setTimeout(() => {
