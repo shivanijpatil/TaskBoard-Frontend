@@ -70,7 +70,7 @@ const Tasks = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-12 bg-white shadow-lg rounded-2xl p-8">
+    <div className="max-w-4xl mx-auto mt-20 bg-white shadow-lg rounded-2xl p-6">
       <div className="p-6 sm:p-8 md:p-10 space-y-6 bg-white rounded-xl shadow-lg">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
           <div className="flex flex-col items-center sm:items-start">
@@ -103,7 +103,7 @@ const Tasks = () => {
       </div>
 
 
-      <div className="flex justify-center items-center mt-8 space-x-4">
+      <div className="flex justify-center items-center  mt-8 space-x-4 ">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
@@ -137,9 +137,12 @@ const Tasks = () => {
           setIsModalOpen(false);
           setSelectedTask(null);
         }}
-        className="transition-all duration-300 ease-in-out"
+      // className="transition-all duration-300 ease-in-out"
       >
-        <TaskForm fetchTasks={fetchTasks} closeModal={() => setIsModalOpen(false)} task={selectedTask} />
+        <div className="transition-all duration-300 ease-in-out"> {/* Style the content div */}
+          <TaskForm fetchTasks={fetchTasks} closeModal={() => setIsModalOpen(false)} task={selectedTask} />
+        </div>
+
       </Modal>
     </div>
 
