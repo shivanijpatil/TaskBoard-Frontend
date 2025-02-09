@@ -27,31 +27,6 @@ const TaskList = ({
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState<Task | null>(null);
 
-  // const handleMarkCompleted = async (task: Task) => {
-
-  //   try {
-  //     const token = localStorage.getItem("token");
-  //     if (!token) return console.error("No token found, please log in.");
-
-  //     await axios.put(
-  //       `https://taskboard-backend-kepl.onrender.com/tasks/complete/${task._id}`,
-  //       {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       }
-  //     );
-
-  //     if (!task.completed) {
-  //       toast.success(`Task "${task.title}" marked as completed.`);
-  //     } else {
-  //       toast.warn(`Task "${task.title}" marked as incomplete.`);
-  //     }
-
-  //     fetchTasks();
-  //   } catch (error) {
-  //     console.error("Error marking task as completed", error);
-  //   }
-  // };
-
   const handleMarkCompleted = async (task: Task) => {
     try {
       const token = localStorage.getItem("token");
@@ -62,7 +37,7 @@ const TaskList = ({
 
       await axios.put(
         `https://taskboard-backend-kepl.onrender.com/tasks/complete/${task._id}`,
-        {},  // Empty body
+        {},  
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -88,60 +63,8 @@ const TaskList = ({
     setTaskToDelete(task);
     setIsDeleteModalOpen(true);
   };
-
-  // const confirmDelete = async () => {
-  //   if (!taskToDelete) return;
-
-  //   try {
-  //     const token = localStorage.getItem("token");
-  //     if (!token) {
-  //       console.error("No token found, please log in.");
-  //       return;
-  //     }
-
-  //     const response = await axios.delete(
-  //       `https://taskboard-backend-kepl.onrender.com/tasks/delete/${taskToDelete._id}`,
-  //       {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       }
-  //     );
-
-  //     toast.success(response.data.message);
-  //     fetchTasks();
-  //     setIsDeleteModalOpen(false);
-  //     setTaskToDelete(null);
-  //   } catch (error) {
-  //     console.error("Error deleting task:", error);
-  //   }
-  // };
-
-  //   const confirmDelete = async (task: Task) => {
-  //   try {
-  //     const token = localStorage.getItem("token");
-  //     if (!token) {
-  //       toast.error("Please login first");
-  //       return;
-  //     }
-
-  //     const response = await axios.delete(
-  //       `https://taskboard-backend-kepl.onrender.com/tasks/delete/${task._id}`,
-  //       {
-  //         headers: {
-  //           'Authorization': `Bearer ${token}`,
-  //           'Content-Type': 'application/json'
-  //         },
-  //         withCredentials: true
-  //       }
-  //     );
-
-  //     toast.success(response.data.message);
-  //     fetchTasks();
-  //   } catch (error) {
-  //     toast.error("Error deleting task");
-  //   }
-  // };
   const confirmDelete = async () => {
-    if (!taskToDelete) return; // Ensure a task is selected
+    if (!taskToDelete) return; 
 
     try {
       const token = localStorage.getItem("token");
